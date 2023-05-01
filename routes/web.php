@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.index');
+});
+
+Route::prefix('/siswa')->group(function () {
+    Route::get('/', function () {
+        return view('user.murid.index');
+    });
 });
