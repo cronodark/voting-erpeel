@@ -26,3 +26,9 @@ Route::prefix('/siswa')->group(function () {
     Route::get('/', [SiswaController::class, 'index'])->name('user.murid.index');
     Route::post('/', [SiswaController::class, 'vote'])->name('user.murid.vote');
 });
+
+Route::prefix('/admin')->group(function () {
+    Route::get('/', function () {
+        return view('user.admin.index');
+    });
+});
