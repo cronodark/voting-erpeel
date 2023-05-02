@@ -21,8 +21,8 @@
 
 <body>
 
-    <div class="header container-fluid bg-white">
-        <div id="menu-jk" class="nav-col text-white shadow-md mb-3">
+    <div class="header container-fluid bg-white fixed-top shadow-md">
+        <div id="menu-jk" class="nav-col text-white">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 py-4 align-items-start">
@@ -52,10 +52,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollToFixed/1.0.8/jquery-scrolltofixed-min.js"
-        integrity="sha512-ohXbv1eFvjIHMXG/jY057oHdBZ/jhthP1U3jES/nYyFdc9g6xBpjDjKIacGoPG6hY//xVQeqpWx8tNjexXWdqA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="sweetalert2.all.min.js"></script>
     <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
     <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
     {{-- js custom --}}

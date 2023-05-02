@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('content')
-    <div class="container-xl pt-2 px-5">
+    <div class="container-xl" style="padding-top: 5rem">
         <div class="row section-title">
             <h2 class="fs-4">Koordinator Jurusan</h2>
         </div>
@@ -97,7 +97,4 @@
 
     {{-- js custom --}}
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-
-</body>
-
-</html>
+@endsection
