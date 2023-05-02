@@ -69,7 +69,9 @@
                         <p class="text-dark mt-2 mb-3 fs-8">{{ $w->visi }}</p>
                         <button data-bs-toggle="modal" data-bs-target="#exampleModal{{ $w->name }}"
                             class="btn btn-primary fw-bolder px-4 fs-8">Misi</button>
-                        <button class="btn btn-success fw-bolder px-4 fs-8">Vote</button>
+                        <form action="{{ route('user.murid.vote') }}">
+                            <button class="btn btn-success fw-bolder px-4 fs-8">Vote</button>
+                        </form>
                     </div>
                 </div>
             @endforeach

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders\Siswa;
 
+use App\Models\User;
 use App\Models\User\Kelas;
 use App\Models\User\Siswa;
-use App\Models\User\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

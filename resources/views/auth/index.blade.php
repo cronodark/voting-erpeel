@@ -16,7 +16,8 @@
     <div class="container">
         <div class="form-login">
             <div class="left-side">
-                <form>
+                <form method="POST" action="{{ route('auth.login') }}">
+                    @csrf
                     <div class="title-app">E-Voting</div>
                     <div class="top-text">Log In</div>
                     <div class="small-text">enter the correct username and password</div>
@@ -29,7 +30,7 @@
                             <i class="bi bi-lock"></i>
                             <input type="password" name="password" id="password" placeholder="Password">
                         </div>
-                        <button class="btn-login" name="login" id="login">Log In</button>
+                        <button type="submit" class="btn-login" name="login" id="login">Log In</button>
                     </div>
                     <div class="footer">&copy; 2023 E-Voting. All Rights Reserved</div>
                 </form>
