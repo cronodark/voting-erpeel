@@ -22,3 +22,9 @@ Route::prefix('/siswa')->group(function () {
         return view('user.murid.index');
     });
 });
+
+Route::prefix('/admin')->group(function () {
+    Route::get('/', function () {
+        return view('user.admin.index');
+    });
+});
