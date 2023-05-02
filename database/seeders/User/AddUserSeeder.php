@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\User;
 
-use App\Models\User\User;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,24 +16,24 @@ class AddUserSeeder extends Seeder
         User::insert([
             [
                 'username' => '12345678910',
-                'password' => 'keren',
+                'password' => bcrypt('12345678910'),
                 'role' => 1
             ],
             [
                 'username' => '1234567891011',
-                'password' => 'bagus',
+                'password' => bcrypt('1234567891011'),
                 'role' => 1
             ],
             [
                 'username' => '123456789101112',
-                'password' => 'hai',
+                'password' => bcrypt('123456789101112'),
                 'role' => 1
             ],
             [
                 'username' => 'admin',
-                'password' => 'admin',
+                'password' => bcrypt('admin'),
                 'role' => 2
-            ],
+            ]
         ]);
     }
 }

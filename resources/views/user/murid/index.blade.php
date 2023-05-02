@@ -1,39 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    {{-- Menyambungkan dengan file css --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    {{-- custom css --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/custom.css') }}">
-    {{-- boostrap icons --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-    <title>E-Voting | RPL</title>
-
-
-</head>
-
-<body>
-
-    <div class="header container-fluid bg-white">
-        <div id="menu-jk" class="nav-col text-white shadow-md mb-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 py-4 align-items-start">
-                        <h1 class="text-dark fs-4">Voting RPL</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-xl pt-2 px-5">
+@extends('layouts.layout')
+@section('content')
+    <div class="container-xl" style="padding-top: 5rem">
         <div class="row section-title">
             <h2 class="fs-4">Koordinator Jurusan</h2>
         </div>
@@ -69,21 +36,14 @@
                         <p class="text-dark mt-2 mb-3 fs-8">{{ $w->visi }}</p>
                         <button data-bs-toggle="modal" data-bs-target="#exampleModal{{ $w->name }}"
                             class="btn btn-primary fw-bolder px-4 fs-8">Misi</button>
-                        <button class="btn btn-success fw-bolder px-4 fs-8">Vote</button>
+                        <form action="{{ route('user.murid.vote') }}">
+                            <button class="btn btn-success fw-bolder px-4 fs-8">Vote</button>
+                        </form>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
-
-    <div class="container">
-        <footer class="justify-content-center align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center">
-                <span class="mb-3 mb-md-0 text-muted">© 2023 SMKN 1 Cimahi | RPL</span>
-            </div>
-        </footer>
-    </div>
-
 
     <!-- Modal -->
     @foreach ($ketua as $k)
@@ -139,7 +99,4 @@
 
     {{-- js custom --}}
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-
-</body>
-
-</html>
+@endsection
