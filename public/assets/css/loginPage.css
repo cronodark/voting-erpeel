@@ -118,6 +118,18 @@ body {
     -o-border-radius: 0 6px 6px 0;
 }
 
+::placeholder {
+    color: var(--textColor);
+}
+
+:-ms-input-placeholder {
+    color: var(--textColor);
+}
+
+::-ms-input-placeholder {
+    color: var(--textColor);
+}
+
 .group-form .btn-login {
     width: 85%;
     margin: 25px 0 0;
