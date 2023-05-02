@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Siswa\SiswaController;
+use App\Http\Controllers\Vote\VoteController;
+use App\Models\Vote\Vote;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +21,5 @@ Route::get('/', function () {
 });
 
 Route::prefix('/siswa')->group(function () {
-    Route::get('/', function () {
-        return view('user.murid.index');
-    });
+    Route::get('/', [SiswaController::class, 'index'])->name('user.murid.index');
 });

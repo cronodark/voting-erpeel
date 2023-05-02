@@ -13,10 +13,19 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('kelas_id');
-            $table->string('username');
-            $table->string('password');
+            $table->string('nisn');
+            $table->string('nis');
+            $table->string('nama');
+            $table->char('jenkel', 1);
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->foreign('kelas_id')
                 ->references('id')
