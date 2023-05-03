@@ -16,8 +16,8 @@ class Vote extends Model
 
     protected $fillable = [
         'siswa_id',
-        'kandidatKetua_id',
-        'kandidatWakil_id',
+        'kandidat_ketua_id',
+        'kandidat_wakil_id',
     ];
     public function siswa()
     {

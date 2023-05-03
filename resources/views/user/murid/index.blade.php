@@ -5,8 +5,11 @@
             <h2 class="fs-4">Koordinator Jurusan</h2>
         </div>
         <div class="row">
-            <form action="{{ route('user.murid.vote_ketua') }}" class="d-flex gap-5" id="form-kojur">
-                @foreach ($ketua as $k)
+            @foreach ($ketua as $k)
+                <form action="{{ route('user.murid.vote_ketua') }}" method="POST" class="d-flex gap-5"
+                    id="{{ $k->id }}">
+                    @csrf
+                    @method('PUT')
                     <div class="col-lg-6 col-md-6">
                         <div class="text-white rounded text-center mb-4 votcard shadow-md bg-white p-4 pt-5">
                             <img class="rounded-pill shadow-md p-2" src="{{ asset('assets/images/member-01.jpg') }}"
@@ -14,6 +17,7 @@
                             <h4 class="mt-3 fs-5 mb-1 fw-bold">{{ $k->name }}</h4>
                             <h6 class="fs-5">Visi:</h6>
                             <p class="text-dark mt-2 mb-3 fs-8">{{ $k->visi }}</p>
+                            <input type="text" id="idketua" name="idketua" value="{{ $k->id }}" hidden>
                             <button data-bs-toggle="modal" data-bs-target="#exampleModal{{ $k->id }}"
                                 class="btn btn-primary fw-bolder px-4 fs-8 me-4"><span><i
                                         class="bi bi-pass-fill"></i></span> Misi</button>
@@ -21,33 +25,11 @@
                                         class="bi bi-clipboard2-check-fill"></i></span> Vote</button>
                         </div>
                     </div>
-                @endforeach
-            </form>
+                </form>
+            @endforeach
         </div>
 
-        <div class="row section-title">
-            <h2 class="fs-4">Wakil Koordinator Jurusan</h2>
-        </div>
-        <div class="row mb-3">
-            <form action="" class="d-flex gap-5" id="form-wakojur">
-                @foreach ($wakil as $w)
-                    <div class="col-lg-6 col-md-6">
-                        <div class="text-white rounded text-center mb-4 votcard shadow-md bg-white p-4 pt-5">
-                            <img class="rounded-pill shadow-md p-2" src="{{ asset('assets/images/member-01.jpg') }}"
-                                alt="">
-                            <h4 class="mt-3 fs-5 mb-1 fw-bold">{{ $w->name }}</h4>
-                            <h6 class="fs-5">Visi:</h6>
-                            <p class="text-dark mt-2 mb-3 fs-8">{{ $w->visi }}</p>
-                            <button data-bs-toggle="modal" data-bs-target="#exampleModal{{ $w->name }}"
-                                class="btn btn-primary fw-bolder px-4 fs-8 me-4"><span><i
-                                        class="bi bi-pass-fill"></i></span> Misi</button>
-                            <button class="btn btn-success fw-bolder px-4 fs-8" id="{{ $w->id }}"><span><i
-                                        class="bi bi-clipboard2-check-fill"></i></span> Vote</button>
-                        </div>
-                    </div>
-                @endforeach
-            </form>
-        </div>
+
     </div>
 
     <!-- Modal -->
@@ -96,7 +78,7 @@
                             'Pilihan anda telah disimpan! Silahkan pilih Wakil Koodinator',
                             'success'
                         ).then(() => {
-                            window.location.href = '{{ route('user.murid.wakojur') }}';
+                            window.location.href = '{{ route('user.murid.wakil') }}';
                         });
                     }
                 });
