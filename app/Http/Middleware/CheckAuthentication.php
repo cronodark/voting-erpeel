@@ -18,12 +18,12 @@ class CheckAuthentication
     {
         $user = Auth::user();
         if (Auth::check()) {
-            if ($user->role == 1 && $request->routeIs('user.murid.ketua')) {
+            if ($user->role == 1 && $request->routeIs('user.murid.index')) {
                 return $next($request);
             } else if ($user->role == 2 && $request->routeIs('user.admin.index')) {
                 return $next($request);
             } else {
-                return redirect()->route('home')->withErrors([
+                return redirect()->route('user.murid.index')->withErrors([
                     'error' => 'You are already logged in.',
                 ]);
             }

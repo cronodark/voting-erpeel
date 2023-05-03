@@ -7,6 +7,7 @@ use Database\Seeders\Kandidat\AddWakilSeeder;
 use Database\Seeders\Siswa\AddKelasSeeder;
 use Database\Seeders\Siswa\AddSiswaSeeder;
 use Database\Seeders\User\AddUserSeeder;
+use Database\Seeders\Vote\AddVoteSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             AddKelasSeeder::class,
             AddUserSeeder::class,
             AddSiswaSeeder::class,
+            AddVoteSeeder::class,
         ]);
     }
 }

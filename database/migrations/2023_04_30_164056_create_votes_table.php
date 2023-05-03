@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('vote', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('siswa_id');
-            $table->unsignedBigInteger('kandidat_ketua_id');
-            $table->unsignedBigInteger('kandidat_wakil_id');
+            $table->unsignedBigInteger('siswa_id')->nullable();
+            $table->unsignedBigInteger('kandidat_ketua_id')->nullable();
+            $table->unsignedBigInteger('kandidat_wakil_id')->nullable();
             $table->timestamps();
 
             $table->foreign('siswa_id')

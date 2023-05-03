@@ -29,12 +29,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 //     Route::post('/', [SiswaController::class, 'vote'])->name('user.murid.vote');
 // });
-Route::group(['middleware' => ['auth', 'auth.check', 'prevent-back-history']], function () {
+Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
     Route::prefix('/siswa')->group(function () {
-        Route::get('/', [SiswaController::class, 'ketua'])->name('user.murid.index');
-        Route::get('/', [SiswaController::class, 'wakil'])->name('user.murid.index');
-        Route::post('/', [SiswaController::class, 'vote_ketua'])->name('user.murid.vote_ketua');
-        Route::post('/', [SiswaController::class, 'vote_wakil'])->name('user.murid.vote_wakil');
+        Route::get('/', [SiswaController::class, 'index'])->name('user.murid.index');
+        Route::get('/wakil', [SiswaController::class, 'wakil'])->name('user.murid.wakil');
+        Route::put('/vote-ketua', [SiswaController::class, 'vote_ketua'])->name('user.murid.vote_ketua');
+        Route::put('/vote-wakil', [SiswaController::class, 'vote_wakil'])->name('user.murid.vote_wakil');
     });
 
     Route::prefix('/admin')->group(function () {
