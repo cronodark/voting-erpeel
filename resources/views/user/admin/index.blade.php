@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.admin')
 @section('content')
     <div class="container-xl" style="padding-top: 8rem;">
         <div class="row section-title m-0 p-0">

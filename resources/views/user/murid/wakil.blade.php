@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.murid')
 @section('content')
     <div class="container-xl" style="padding-top: 5rem">
         <div class="row section-title">
