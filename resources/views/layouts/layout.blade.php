@@ -28,6 +28,10 @@
                     <div class="col-lg-12 py-4 align-items-start">
                         <h1 class="text-dark fs-4">Voting RPL</h1>
                     </div>
+                    <form action="{{ route('auth.logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn-primary rounded text-white">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>
