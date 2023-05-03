@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Siswa\SiswaController;
 use App\Http\Controllers\Vote\VoteController;
@@ -20,18 +21,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'index'])->name('auth.index');
 Route::post('/', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 
-Route::prefix('/siswa')->group(function () {
-    Route::get('/', [SiswaController::class, 'index'])->name('user.murid.index');
-    Route::get('/wakojur', function(){
-        return view('user.murid.wakil');
-    })->name('user.murid.wakojur');
-    Route::post('/', [SiswaController::class, 'vote'])->name('user.murid.vote');
-});
+// Route::prefix('/siswa')->group(function () {
+//     Route::get('/', [SiswaController::class, 'index'])->name('user.murid.index');
+    
+//     Route::post('/', [SiswaController::class, 'vote'])->name('user.murid.vote');
+// });
+Route::group(['middleware' => ['auth', 'auth.check', 'prevent-back-history']], function () {
+    Route::prefix('/siswa')->group(function () {
+        Route::get('/', [SiswaController::class, 'index'])->name('user.murid.index');
+        Route::get('/wakojur', function(){
+            return view('user.murid.wakil');
+        })->name('user.murid.wakojur');
+        Route::post('/', [SiswaController::class, 'vote_ketua'])->name('user.murid.vote_ketua');
+        Route::post('/', [SiswaController::class, 'vote_wakil'])->name('user.murid.vote_wakil');
+    });
 
-Route::prefix('/admin')->group(function () {
-    Route::get('/', function () {
-        return view('user.admin.index');
+    Route::prefix('/admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('user.admin.index');
     });
 });

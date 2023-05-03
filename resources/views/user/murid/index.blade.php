@@ -5,7 +5,7 @@
             <h2 class="fs-4">Koordinator Jurusan</h2>
         </div>
         <div class="row">
-            <form action="" class="d-flex gap-5" id="form-kojur">
+            <form action="{{ route('user.murid.vote_ketua') }}" class="d-flex gap-5" id="form-kojur">
                 @foreach ($ketua as $k)
                     <div class="col-lg-6 col-md-6">
                         <div class="text-white rounded text-center mb-4 votcard shadow-md bg-white p-4 pt-5">

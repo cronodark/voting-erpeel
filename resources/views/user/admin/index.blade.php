@@ -8,81 +8,97 @@
             <h2 class="fs-4 fw-lighter text-center" style="color: #202020;">Koordinator Jurusan</h2>
         </div>
         <div class="row mb-5 d-flex justify-content-center">
-            <div class="col-md-5 mb-4">
-                <div class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex flex-column align-content-center">
-                    <div class="col-md-12 text-center">
-                        <img class="rounded-pill shadow-md p-2 max-130" src="{{ asset('assets/images/member-01.jpg') }}"
-                            alt="">
-                    </div>
-                    <div class="col-md-9 align-self-center text-center mt-3">
-                        <h4 class="fs-5 mb-1 fw-bold" style="color: #202020;">Kevin Farhan H.</h4>
-                        <p class="fs-6 mb-4 fw-bold" style="color: #202020;">Angkatan 48</p>
-                        <p class="fs-8 mb-3 fw-bold" style="color: #202020;">Total Voting : 205 Votes</p>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label"
-                                style="width: 40%;" aria-valuenow="205" aria-valuemin="0" aria-valuemax="100">40%
-                            </div>
+            @foreach ($ketua as $k)
+                <div class="col-md-5 mb-4">
+                    <div
+                        class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex flex-column align-content-center">
+                        <div class="col-md-12 text-center">
+                            <img class="rounded-pill shadow-md p-2 max-130" src="{{ asset('assets/images/member-01.jpg') }}"
+                                alt="">
+                        </div>
+                        <div class="col-md-9 align-self-center text-center mt-3">
+                            <h4 class="fs-5 mb-1 fw-bold" style="color: #202020;">{{ $k->name }}</h4>
+                            <p class="fs-6 mb-4 fw-bold" style="color: #202020;">{{ $k->kelas }}</p>
+                            @if ($k->id == 1)
+                                <p class="fs-8 mb-3 fw-bold" style="color: #202020;">Total Vote : {{ $votesatu }}</p>
+                            @elseif ($k->id == 2)
+                                <p class="fs-8 mb-3 fw-bold" style="color: #202020;">Total Vote : {{ $votedua }}</p>
+                            @else
+                                <p class="fs-8 mb-3 fw-bold" style="color: #202020;">Total Vote : -</p>
+                            @endif
+                            @if ($k->id == 1)
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label"
+                                        style="width: {{ $persensatu }}%;" aria-valuenow="205" aria-valuemin="0"
+                                        aria-valuemax="100">{{ $persensatu }}%
+                                    </div>
+                                </div>
+                            @elseif ($k->id == 2)
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label"
+                                        style="width: {{ $persendua }}%;" aria-valuenow="205" aria-valuemin="0"
+                                        aria-valuemax="100">{{ $persendua }}%
+                                    </div>
+                                </div>
+                            @else
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label"
+                                        style="width: 100%;" aria-valuenow="205" aria-valuemin="0" aria-valuemax="100">Data
+                                        tidak tersedia
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-5 mb-4">
-                <div class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex flex-column align-content-center">
-                    <div class="col-md-12 text-center">
-                        <img class="rounded-pill shadow-md p-2 max-130" src="{{ asset('assets/images/member-01.jpg') }}"
-                            alt="">
-                    </div>
-                    <div class="col-md-9 align-self-center text-center mt-3">
-                        <h4 class="fs-5 mb-1 fw-bold" style="color: #202020;">Fajar Maulana S.</h4>
-                        <p class="fs-6 mb-4 fw-bold" style="color: #202020;">Angkatan 48</p>
-                        <p class="fs-8 mb-3 fw-bold" style="color: #202020;">Total Voting : 205 Votes</p>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label"
-                                style="width: 40%;" aria-valuenow="205" aria-valuemin="0" aria-valuemax="100">40%
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
             <div class="row section-title">
                 <h2 class="fs-4 fw-lighter text-center" style="color: #202020;">Wakil Koordinator Jurusan</h2>
             </div>
-            <div class="col-md-5 mb-4">
-                <div class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex flex-column align-content-center">
-                    <div class="col-md-12 text-center">
-                        <img class="rounded-pill shadow-md p-2 max-130" src="{{ asset('assets/images/member-01.jpg') }}"
-                            alt="">
-                    </div>
-                    <div class="col-md-9 align-self-center text-center mt-3">
-                        <h4 class="fs-5 mb-1 fw-bold" style="color: #202020;">Faisal Luqmanul H.</h4>
-                        <p class="fs-6 mb-4 fw-bold" style="color: #202020;">Angkatan 49</p>
-                        <p class="fs-8 mb-3 fw-bold" style="color: #202020;">Total Voting : 205 Votes</p>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label"
-                                style="width: 40%;" aria-valuenow="205" aria-valuemin="0" aria-valuemax="100">40%
-                            </div>
+            @foreach ($wakil as $k)
+                <div class="col-md-5 mb-4">
+                    <div
+                        class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex flex-column align-content-center">
+                        <div class="col-md-12 text-center">
+                            <img class="rounded-pill shadow-md p-2 max-130" src="{{ asset('assets/images/member-01.jpg') }}"
+                                alt="">
+                        </div>
+                        <div class="col-md-9 align-self-center text-center mt-3">
+                            <h4 class="fs-5 mb-1 fw-bold" style="color: #202020;">{{ $k->name }}</h4>
+                            <p class="fs-6 mb-4 fw-bold" style="color: #202020;">{{ $k->kelas }}</p>
+                            @if ($k->id == 1)
+                                <p class="fs-8 mb-3 fw-bold" style="color: #202020;">Total Vote : {{ $votesatu }}</p>
+                            @elseif ($k->id == 2)
+                                <p class="fs-8 mb-3 fw-bold" style="color: #202020;">Total Vote : {{ $votedua }}</p>
+                            @else
+                                <p class="fs-8 mb-3 fw-bold" style="color: #202020;">Total Vote : -</p>
+                            @endif
+                            @if ($k->id == 1)
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label"
+                                        style="width: {{ $persensatuw }}%;" aria-valuenow="205" aria-valuemin="0"
+                                        aria-valuemax="100">{{ $persensatuw }}%
+                                    </div>
+                                </div>
+                            @elseif ($k->id == 2)
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label"
+                                        style="width: {{ $persenduaw }}%;" aria-valuenow="205" aria-valuemin="0"
+                                        aria-valuemax="100">{{ $persenduaw }}%
+                                    </div>
+                                </div>
+                            @else
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label"
+                                        style="width: 100%;" aria-valuenow="205" aria-valuemin="0" aria-valuemax="100">Data
+                                        tidak tersedia
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-5 mb-4">
-                <div class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex flex-column align-content-center">
-                    <div class="col-md-12 text-center">
-                        <img class="rounded-pill shadow-md p-2 max-130" src="{{ asset('assets/images/member-01.jpg') }}"
-                            alt="">
-                    </div>
-                    <div class="col-md-9 align-self-center text-center mt-3">
-                        <h4 class="fs-5 mb-1 fw-bold" style="color: #202020;">Arya M. Rafi</h4>
-                        <p class="fs-6 mb-4 fw-bold" style="color: #202020;">Angkatan 49</p>
-                        <p class="fs-8 mb-3 fw-bold" style="color: #202020;">Total Voting : 205 Votes</p>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-label="Example with label"
-                                style="width: 40%;" aria-valuenow="205" aria-valuemin="0" aria-valuemax="100">40%
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
