@@ -27,15 +27,15 @@
     <div class="header container-fluid bg-white fixed-top shadow-md">
         <div id="menu-jk" class="nav-col text-white">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 py-4 align-items-start">
+                {{-- <div class="row"> --}}
+                    <div class="col-lg-12 py-4 d-flex justify-content-between">
                         <h1 class="text-dark fs-4">Voting RPL</h1>
+                        <form action="{{ route('auth.logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn-primary rounded text-white py-1 px-3">Logout</button>
+                        </form>
                     </div>
-                    <form action="{{ route('auth.logout') }}" method="post">
-                        @csrf
-                        <button type="submit" class="btn-primary rounded text-white">Logout</button>
-                    </form>
-                </div>
+                {{-- </div> --}}
             </div>
         </div>
     </div>

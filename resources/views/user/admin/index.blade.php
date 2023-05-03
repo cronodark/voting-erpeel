@@ -99,6 +99,19 @@
                     </div>
                 </div>
             @endforeach
+            <div class="row section-title">
+                <h2 class="fs-4 fw-lighter text-center" style="color: #202020;">Persentase Voting</h2>
+            </div>
+            <div class="col-md-5 mb-4">
+                <div class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex justify-content-center">
+                    <canvas id="chart_kojur"></canvas>
+                </div>
+            </div>
+            <div class="col-md-5 mb-4">
+                <div class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex justify-content-center">
+                    <canvas id="chart_wakojur"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -136,4 +149,70 @@
             </div>
         </div>
     </div>
+
+    {{-- Chart JS --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {{-- Setup Chart --}}
+    <script>
+        var ctx1 = document.getElementById('chart_kojur').getContext('2d');
+        var chart1 = new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['Rehan', 'Fajri'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [12, 19],
+                    backgroundColor: [
+                        'rgb(28, 165, 232)',
+                        'rgb(255, 174, 53)',
+                    ],
+                    borderColor: [
+                        'rgb(28, 165, 232)',
+                        'rgb(255, 174, 53)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('chart_wakojur').getContext('2d');
+        var chart2 = new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Whangsaff', 'Cilok'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [12, 19],
+                    backgroundColor: [
+                        'rgb(28, 165, 232)',
+                        'rgb(255, 174, 53)',
+                    ],
+                    borderColor: [
+                        'rgb(28, 165, 232)',
+                        'rgb(255, 174, 53)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
 @endsection
