@@ -32,10 +32,7 @@ class AuthController extends Controller
             }
         }
 
-        return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-            'password' => 'The provided credentials do not match our records.',
-        ]);
+        return redirect()->route('auth.index')->with('error', 'Username atau password salah!');
     }
 
     public function logout(Request $request)
@@ -45,6 +42,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-        return view('auth.index');
+        return redirect('/');
     }
 }

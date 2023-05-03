@@ -34,7 +34,7 @@ class SiswaController extends Controller
     public function wakil()
     {
         $wakil = KandidatWakil::all();
-        dd($wakil);
+        // dd($wakil);
         return view('user.murid.wakil', [
             'wakil' => $wakil,
         ]);
@@ -75,12 +75,13 @@ class SiswaController extends Controller
             'kandidat_wakil_id' => $request->idwakil,
         ]);
         if ($voteaksi) {
-            Auth::logout();
-
+            
             $request->session()->invalidate();
-
+            
             $request->session()->regenerateToken();
-
+            
+            Auth::logout();
+            
             return view('auth.index');
         }
     }
