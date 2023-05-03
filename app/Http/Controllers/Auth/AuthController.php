@@ -27,12 +27,13 @@ class AuthController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
             $siswa = Siswa::where('user_id', $user->id)->first();
-            $checkVote = Vote::where('siswa_id', $siswa->id)->where('kandidat_ketua_id', 1)
-                ->orWhere('kandidat_ketua_id', 2)->first();
-            if ($checkVote == null) {
-                return redirect()->route('user.murid.index')->with('error', 'You have already voted.');
-            }
+            // dd($siswa);
             if ($user->role == 1) {
+                $checkVote = Vote::where('siswa_id', $siswa->id)->where('kandidat_ketua_id', 1)
+                    ->orWhere('kandidat_ketua_id', 2)->first();
+                if ($checkVote == null) {
+                    return redirect()->route('user.murid.index')->with('error', 'You have already voted.');
+                }
                 return redirect()->route('user.murid.index');
             } elseif ($user->role == 2) {
                 return redirect()->route('user.admin.index');
