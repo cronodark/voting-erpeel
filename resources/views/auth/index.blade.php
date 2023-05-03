@@ -10,13 +10,15 @@
     <link rel="stylesheet" href="{{ asset('assets/css/loginPage.css') }}">
     {{-- boostrap icons --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
 </head>
 
 <body>
     <div class="container">
         <div class="form-login">
             <div class="left-side">
-                <form method="POST" action="{{ route('auth.login') }}">
+                <form method="POST" class="needs-validation" action="{{ route('auth.login') }}">
                     @csrf
                     <div class="title-app">E-Voting</div>
                     <div class="top-text">Log In</div>
@@ -24,11 +26,11 @@
                     <div class="group-form">
                         <div class="input-field">
                             <i class="bi bi-person"></i>
-                            <input type="text" name="username" id="username" placeholder="Username">
+                            <input type="text" name="username" id="username" placeholder="Username" required>
                         </div>
-                        <div class="input-field">
+                        <div class="input-field has-validation">
                             <i class="bi bi-lock"></i>
-                            <input type="password" name="password" id="password" placeholder="Password">
+                            <input type="password" name="password" id="password" placeholder="Password" required>
                         </div>
                         <button type="submit" class="btn-login" name="login" id="login">Log In</button>
                     </div>
@@ -47,6 +49,18 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Terjadi kesalahan',
+                text: '{{ session('error') }}'
+            });
+        </script>
+    @endif
 </body>
 
 </html>
