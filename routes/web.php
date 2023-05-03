@@ -24,6 +24,9 @@ Route::post('/', [AuthController::class, 'login'])->name('auth.login');
 
 Route::prefix('/siswa')->group(function () {
     Route::get('/', [SiswaController::class, 'index'])->name('user.murid.index');
+    Route::get('/wakojur', function(){
+        return view('user.murid.wakil');
+    })->name('user.murid.wakojur');
     Route::post('/', [SiswaController::class, 'vote'])->name('user.murid.vote');
 });
 
