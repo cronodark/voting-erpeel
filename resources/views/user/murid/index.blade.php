@@ -5,7 +5,7 @@
             <h2 class="fs-4">Koordinator Jurusan</h2>
         </div>
         <div class="row">
-            <form action="{{ route('user.murid.vote') }}" class="d-flex gap-5" id="form-kojur">
+            <form action="{{ route('user.murid.vote_ketua') }}" class="d-flex gap-5" id="form-kojur">
                 @foreach ($ketua as $k)
                     <div class="col-lg-6 col-md-6">
                         <div class="text-white rounded text-center mb-4 votcard shadow-md bg-white p-4 pt-5">
@@ -70,38 +70,37 @@
         </div>
     @endforeach
 
-    @foreach ($wakil as $w)
-        <div class="modal fade" id="exampleModal{{ $w->name }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-6 fw-bold fs-5" id="exampleModalLabel">Misi</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="molist">
-                            <li>{{ $w->misi }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endforeach
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    {{-- Memanggil file js --}}
-    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
-        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollToFixed/1.0.8/jquery-scrolltofixed-min.js"
-        integrity="sha512-ohXbv1eFvjIHMXG/jY057oHdBZ/jhthP1U3jES/nYyFdc9g6xBpjDjKIacGoPG6hY//xVQeqpWx8tNjexXWdqA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const voteBtns = document.querySelectorAll('.button-vote-kojur');
 
-    {{-- js custom --}}
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
+        voteBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Yakin memilih kandidat tersebut?',
+                    text: 'Anda tidak akan bisa merubahnya setelah ini',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yakin'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('.button-vote-kojur').prop('disabled', true);
+                        // const form = btn.closest('form');
+                        Swal.fire(
+                            'Anda sudah memilih!',
+                            'Pilihan anda telah disimpan! Silahkan pilih Wakil Koodinator',
+                            'success'
+                        ).then(() => {
+                            window.location.href = '{{ route('user.murid.wakojur') }}';
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
