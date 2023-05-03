@@ -9,14 +9,14 @@
         </div>
         <div class="row mb-5 d-flex justify-content-center">
             @foreach ($ketua as $k)
-                <div class="col-md-5 mb-4">
+                <div class="col-lg-5 mb-4">
                     <div
                         class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex flex-column align-content-center">
-                        <div class="col-md-12 text-center">
+                        <div class="col-lg-12 text-center">
                             <img class="rounded-pill shadow-md p-2 max-130" src="{{ asset('assets/images/member-01.jpg') }}"
                                 alt="">
                         </div>
-                        <div class="col-md-9 align-self-center text-center mt-3">
+                        <div class="col-lg-9 align-self-center text-center mt-3">
                             <h4 class="fs-5 mb-1 fw-bold" style="color: #202020;">{{ $k->name }}</h4>
                             <p class="fs-6 mb-4 fw-bold" style="color: #202020;">{{ $k->kelas }}</p>
                             @if ($k->id == 1)
@@ -56,14 +56,14 @@
                 <h2 class="fs-4 fw-lighter text-center" style="color: #202020;">Wakil Koordinator Jurusan</h2>
             </div>
             @foreach ($wakil as $k)
-                <div class="col-md-5 mb-4">
+                <div class="col-lg-5 mb-4">
                     <div
                         class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex flex-column align-content-center">
-                        <div class="col-md-12 text-center">
+                        <div class="col-lg-12 text-center">
                             <img class="rounded-pill shadow-md p-2 max-130" src="{{ asset('assets/images/member-01.jpg') }}"
                                 alt="">
                         </div>
-                        <div class="col-md-9 align-self-center text-center mt-3">
+                        <div class="col-lg-9 align-self-center text-center mt-3">
                             <h4 class="fs-5 mb-1 fw-bold" style="color: #202020;">{{ $k->name }}</h4>
                             <p class="fs-6 mb-4 fw-bold" style="color: #202020;">{{ $k->kelas }}</p>
                             @if ($k->id == 1)
@@ -102,14 +102,20 @@
             <div class="row section-title">
                 <h2 class="fs-4 fw-lighter text-center" style="color: #202020;">Persentase Voting</h2>
             </div>
-            <div class="col-md-5 mb-4">
-                <div class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex justify-content-center">
-                    <canvas id="chart_kojur"></canvas>
+            <div class="col-lg-5 mb-4">
+                <div class="row shadow-md py-4 px-5 m-0 rounded shadow-md bg-white d-flex justify-content-center">
+                    <div class="border p-0 rounded">
+                        <h2 class="fs-5 border-bottom py-3 px-4 fw-bold">Koordinator Jurusan</h2>
+                        <canvas id="chart_kojur" class="my-4 mx-3"></canvas>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-5 mb-4">
-                <div class="row shado-md pt-3 pb-4 m-0 rounded shadow-md bg-white d-flex justify-content-center">
-                    <canvas id="chart_wakojur"></canvas>
+            <div class="col-lg-5 mb-4"> 
+                <div class="row shadow-md py-4 px-5 m-0 rounded shadow-md bg-white d-flex justify-content-center">
+                    <div class="border p-0 rounded">
+                        <h2 class="fs-5 border-bottom py-3 px-4 fw-bold">Wakil Koordinator Jurusan</h2>
+                        <canvas id="chart_wakojur" class="my-4 mx-3"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -159,7 +165,20 @@
         var chart1 = new Chart(ctx1, {
             type: 'doughnut',
             data: {
-                labels: ['Rehan', 'Fajri'],
+                labels: ['Hilmy Rizky Nugraha', 'Daffa Ariya Prayoga'],
+                // datasets: [{
+                //     label: 'Persentasi Vote',
+                //     data: [33.3, 30],
+                //     backgroundColor: [
+                //         'rgb(28, 165, 232)',
+                //         'rgb(195, 236, 255)',
+                //     ],
+                //     borderColor: [
+                //         'rgb(28, 165, 232)',
+                //         'rgb(195, 236, 255)',
+                //     ],
+                //     borderWidth: 1
+                // }]
                 datasets: [{
                     label: 'Sales',
                     data: [12, 19],
@@ -189,7 +208,20 @@
         var chart2 = new Chart(ctx2, {
             type: 'doughnut',
             data: {
-                labels: ['Whangsaff', 'Cilok'],
+                labels: ['Daffa Salmanaufal A', 'Riyan Septiana'],
+                // datasets: [{
+                //     label: 'Revenue',
+                //     data: [12, 19],
+                //     backgroundColor: [
+                //         'rgb(28, 165, 232)',
+                //         'rgb(195, 236, 255)',
+                //     ],
+                //     borderColor: [
+                //         'rgb(28, 165, 232)',
+                //         'rgb(195, 236, 255)',
+                //     ],
+                //     borderWidth: 1
+                // }]
                 datasets: [{
                     label: 'Revenue',
                     data: [12, 19],
