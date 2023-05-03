@@ -18,7 +18,7 @@ class CheckAuthentication
     {
         $user = Auth::user();
         if (Auth::check()) {
-            if ($user->role == 1 && $request->routeIs('user.murid.index')) {
+            if ($user->role == 1 && $request->routeIs('user.murid.ketua')) {
                 return $next($request);
             } else if ($user->role == 2 && $request->routeIs('user.admin.index')) {
                 return $next($request);

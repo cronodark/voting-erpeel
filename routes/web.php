@@ -26,7 +26,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 Route::group(['middleware' => ['auth', 'auth.check', 'prevent-back-history']], function () {
     Route::prefix('/siswa')->group(function () {
-        Route::get('/', [SiswaController::class, 'index'])->name('user.murid.index');
+        Route::get('/', [SiswaController::class, 'ketua'])->name('user.murid.index');
+        Route::get('/', [SiswaController::class, 'wakil'])->name('user.murid.index');
         Route::post('/', [SiswaController::class, 'vote_ketua'])->name('user.murid.vote_ketua');
         Route::post('/', [SiswaController::class, 'vote_wakil'])->name('user.murid.vote_wakil');
     });

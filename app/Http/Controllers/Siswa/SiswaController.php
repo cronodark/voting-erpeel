@@ -20,12 +20,12 @@ class SiswaController extends Controller
 
     // }
 
-    public function index()
+    public function ketua()
     {
         $ketua = KandidatKetua::all();
         $wakil = KandidatWakil::all();
         // dd(auth()->user());
-        return view('user.murid.index', [
+        return view('user.murid.ketua', [
             'ketua' => $ketua,
             'wakil' => $wakil
         ]);
@@ -38,13 +38,16 @@ class SiswaController extends Controller
         $vote = Vote::with(['siswa_id', 'kandidat_ketua_id'])
             ->where('siswa_id', $siswa->id)->where('kandidat_ketua_id', 1 or 2)->first();
         if ($vote) {
-            return redirect()->route('user.murid.index')->with('error', 'You have already voted.');
+            return redirect()->route('user.murid.ketua')->with('error', 'You have already voted.');
         }
 
         $voteaksi = Vote::query()->create([
             'siswa_id' => $user->id,
-            'kandidatKetua_id' => $request->idketua,
-            'kandidatWakil_id' => $request->idwakil,
+            'kandidat_ketua_id' => $request->idketua,
+        ]);
+
+        return view('user.murid.wakil', [
+            'voteaksi' => $voteaksi
         ]);
     }
     public function vote_wakil(Request $request)
@@ -53,12 +56,13 @@ class SiswaController extends Controller
         $siswa = Siswa::where('user_id', $user->id)->first();
         $vote = Vote::with(['siswa_id', 'kandidat_wakil_id'])
             ->where('siswa_id', $siswa->id)->where('kandidat_wakil_id', 1 or 2)->first();
-        $voteberes = Vote::with(['siswa_id', 'kandidat_wakil_id'])
-            ->where('siswa_id', $siswa->id)->where('kandidat_ketua_id', 1 or 2)->where('kandidat_wakil_id', 1 or 2)->first();
         if ($vote) {
-            return redirect()->route('user.murid.index')->with('error', 'You have already voted.');
+            return redirect()->route('user.murid.wakil')->with('error', 'You have already voted.');
         }
-        if ($voteberes) {
+        $voteaksi = Vote::query()->where('siswa_id', $user->id)->create([
+            'kandidat_wakil_id' => $request->idketua,
+        ]);
+        if ($voteaksi) {
             Auth::logout();
 
             $request->session()->invalidate();

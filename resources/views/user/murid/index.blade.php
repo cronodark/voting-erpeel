@@ -17,7 +17,7 @@
                             <button data-bs-toggle="modal" data-bs-target="#exampleModal{{ $k->id }}"
                                 class="btn btn-primary fw-bolder px-4 fs-8 me-4"><span><i
                                         class="bi bi-pass-fill"></i></span> Misi</button>
-                            <button class="btn btn-success fw-bolder px-4 fs-8"><span><i
+                            <button class="btn btn-success fw-bolder px-4 fs-8" id="{{ $k->id }}"><span><i
                                         class="bi bi-clipboard2-check-fill"></i></span> Vote</button>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             <button data-bs-toggle="modal" data-bs-target="#exampleModal{{ $w->name }}"
                                 class="btn btn-primary fw-bolder px-4 fs-8 me-4"><span><i
                                         class="bi bi-pass-fill"></i></span> Misi</button>
-                            <button class="btn btn-success fw-bolder px-4 fs-8"><span><i
+                            <button class="btn btn-success fw-bolder px-4 fs-8" id="{{ $w->id }}"><span><i
                                         class="bi bi-clipboard2-check-fill"></i></span> Vote</button>
                         </div>
                     </div>
