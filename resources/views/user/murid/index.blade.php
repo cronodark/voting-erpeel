@@ -7,28 +7,25 @@
         <div class="row d-flex">
             @foreach ($ketua as $k)
                 <div class="col-lg-6 col-md-6">
-                    <div class="card-wrapper">
-                        <form action="{{ route('user.murid.vote_ketua') }}" method="POST" id="{{ $k->id }}">
-                            @csrf
-                            @method('PUT')
-                            <div class="text-white rounded text-center mb-4 votcard shadow-md bg-white p-4 pt-5">
-                                <img class="rounded-pill shadow-md p-2" src="{{ asset('assets/images/member-01.jpg') }}"
-                                    alt="">
-                                <h4 class="mt-3 fs-5 mb-1 fw-bold">{{ $k->name }}</h4>
-                                <h5 class="mt-2 fs-6 mb-1 fw-bold">{{ $k->kelas }}</h5>
-                                <h6 class="fs-6">Visi:</h6>
-                                <p class="text-dark mt-2 mb-3 fs-8 fw-bold">{{ $k->visi }}</p>
-                                <input type="text" id="idketua" name="idketua" value="{{ $k->id }}" hidden>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $k->id }}"
-                                    class="btn btn-primary fw-bolder px-4 fs-8 me-4">
-                                    <span><i class="bi bi-pass-fill"></i></span> Misi
-                                </button>
-                                <button class="btn btn-success fw-bolder px-4 fs-8 button-vote-kojur" id="{{ $k->id }}">
-                                    <span><i class="bi bi-clipboard2-check-fill"></i></span> Vote
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                    <form action="{{ route('user.murid.vote_ketua') }}" method="POST" id="{{ $k->id }}">
+                        @csrf
+                        @method('PUT')
+                        <div class="text-white rounded text-center mb-4 votcard shadow-md bg-white p-4 pt-5">
+                            <img class="rounded-pill shadow-md p-2" src="{{ $k->foto }}" alt="">
+                            <h4 class="mt-3 fs-5 mb-1 fw-bold">{{ $k->name }}</h4>
+                            <h5 class="mt-2 fs-6 mb-1 fw-bold">{{ $k->kelas }}</h5>
+                            <h6 class="fs-6">Visi:</h6>
+                            <p class="text-dark mt-2 mb-3 fs-8 fw-bold">{{ $k->visi }}</p>
+                            <input type="text" id="idketua" name="idketua" value="{{ $k->id }}" hidden>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $k->id }}"
+                                class="btn btn-primary fw-bolder px-4 fs-8 me-4">
+                                <span><i class="bi bi-pass-fill"></i></span> Misi
+                            </button>
+                            <button type="s" class="btn btn-success fw-bolder px-4 fs-8 button-vote-kojur" id="{{ $k->id }}">
+                                <span><i class="bi bi-clipboard2-check-fill"></i></span> Vote
+                            </button>
+                        </div>
+                    </form>
                 </div>
             @endforeach
         </div>
@@ -78,13 +75,19 @@
                             'Anda sudah memilih!',
                             'Pilihan anda telah disimpan! Silahkan pilih Wakil Koodinator',
                             'success'
-                        ).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = '{{ route('user.murid.wakil') }}';
-                                const form = btn.closest('form');
-                                form.submit();
-                            }
-                        });
+                        )
+                        // .then((result) => {
+                        //     if (result.isConfirmed) {
+                        //         const form = btn.closest('form');
+                        //         form.submit();
+                        //         window.location.href = '{{ route('user.murid.wakil') }}';
+                        //     }
+                        // });
+                        setTimeout(() => {
+                            window.location.href = '{{ route('user.murid.wakil') }}';
+                            const form = btn.closest('form');
+                            form.submit();
+                        }, 1000);
                     }
                 });
             });
