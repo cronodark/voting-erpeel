@@ -49,16 +49,19 @@ class SiswaController extends Controller
         $siswa = Siswa::where('user_id', $user->id)->first();
         $vote = Vote::where('siswa_id', $siswa->id)->where('kandidat_ketua_id', 1)
             ->orWhere('kandidat_ketua_id', 2)->first();
-        // dd($vote);
+        
         if ($vote) {
             return redirect()->route('user.murid.index')->with('error', 'You have already voted.');
         }
 
+        
         $voteaksi = Vote::where('siswa_id', $siswa->id)->update([
             'kandidat_ketua_id' => $request->idketua,
         ]);
 
-        return view('user.murid.wakil', [
+        // dd($voteaksi);
+
+        return redirect()->route('user.murid.wakil')->with([
             'voteaksi' => $voteaksi,
             'wakil' => $wakil
         ]);
@@ -84,7 +87,7 @@ class SiswaController extends Controller
 
             Auth::logout();
 
-            return view('auth.index');
+            return redirect('/');
         }
     }
 }

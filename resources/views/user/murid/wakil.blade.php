@@ -32,43 +32,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    {{-- <script>
-        const voteBtns = document.querySelectorAll('.button-vote-wakojur');
-
-        voteBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                Swal.fire({
-                    title: 'Yakin memilih kandidat tersebut?',
-                    text: 'Anda tidak akan bisa merubahnya setelah ini',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yakin'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            type: 'POST',
-                            url: '/logout',
-                            data: {
-                                _token: '{{ csrf_token() }}'
-                            },
-                            success: function(response) {
-                                window.location.href = '/';
-                            },
-                            error: function(error) {
-                                console.log(error);
-                            }
-                        });
-                        const form = btn.closest('form');
-                        form.submit();
-                    }
-                });
-            });
-        }); 
-    </script> --}}
     <script>
         const voteBtns = document.querySelectorAll('.button-vote-wakojur');
 
@@ -96,7 +59,7 @@
                             window.location.href = '/';
                             const form = btn.closest('form');
                             form.submit();
-                        }, 1000);
+                        }, 2000);
                     }
                 });
             });
