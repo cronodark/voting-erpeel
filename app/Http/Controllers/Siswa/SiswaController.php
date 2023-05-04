@@ -22,18 +22,20 @@ class SiswaController extends Controller
 
     public function index()
     {
-        $ketua = KandidatKetua::all();
-        $wakil = KandidatWakil::all();
-        // dd(auth()->user());
+        $user = auth()->user();
+        $siswa = Siswa::where('user_id', $user->id)->first();
+        $ketua = KandidatKetua::all()->sortBy('id');
+        $wakil = KandidatWakil::all()->sortBy('id');
+        // dd($user);
         return view('user.murid.index', [
             'ketua' => $ketua,
-            'wakil' => $wakil
-
+            'wakil' => $wakil,
+            'siswa' => $siswa
         ]);
     }
     public function wakil()
     {
-        $wakil = KandidatWakil::all();
+        $wakil = KandidatWakil::all()->sortBy('id');
         // dd($wakil);
         return view('user.murid.wakil', [
             'wakil' => $wakil,

@@ -17,13 +17,18 @@ class AdminController extends Controller
         $wakil = KandidatWakil::all();
         $votesatu = Vote::where('kandidat_ketua_id', 1)->get()->count();
         $votedua = Vote::where('kandidat_ketua_id', 2)->get()->count();
-        $totaluser = User::all()->count();
-        $persensatu = ($votesatu / $totaluser) * 100;
-        $persendua = ($votedua / $totaluser) * 100;
+        $totalvoter = Vote::where('kandidat_ketua_id', 1)
+            ->orWhere('kandidat_ketua_id', 2)->count();
+        $hasilsatu = ($votesatu / $totalvoter) * 100;
+        $hasildua = ($votedua / $totalvoter) * 100;
         $votesatuw = Vote::where('kandidat_wakil_id', 1)->get()->count();
         $voteduaw = Vote::where('kandidat_wakil_id', 2)->get()->count();
-        $persensatuw = ($votesatuw / $totaluser) * 100;
-        $persenduaw = ($voteduaw / $totaluser) * 100;
+        $hasilsatuw = ($votesatuw / $totalvoter) * 100;
+        $hasilduaw = ($voteduaw / $totalvoter) * 100;
+        $persensatu = number_format($hasilsatu, '1');
+        $persendua = number_format($hasildua, '1');
+        $persensatuw = number_format($hasilsatuw, '1');
+        $persenduaw = number_format($hasilduaw, '1');
         // dd($persensatu);
         return view('user.admin.index', [
             'ketua' => $ketua,

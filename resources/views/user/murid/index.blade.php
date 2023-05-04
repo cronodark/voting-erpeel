@@ -43,7 +43,8 @@
                     </div>
                     <div class="modal-body">
                         <ul class="molist">
-                            <li>{{ $k->misi }}</li>
+                            {{ $k->misi }}
+
                         </ul>
                     </div>
                 </div>

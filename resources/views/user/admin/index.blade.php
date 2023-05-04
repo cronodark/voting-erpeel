@@ -110,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 mb-4"> 
+            <div class="col-lg-5 mb-4">
                 <div class="row shadow-md py-4 px-5 m-0 rounded shadow-md bg-white d-flex justify-content-center">
                     <div class="border p-0 rounded">
                         <h2 class="fs-5 border-bottom py-3 px-4 fw-bold">Wakil Koordinator Jurusan</h2>
@@ -181,7 +181,7 @@
                 // }]
                 datasets: [{
                     label: 'Sales',
-                    data: [12, 19],
+                    data: [{{ $persensatu }}, {{ $persendua }}],
                     backgroundColor: [
                         'rgb(28, 165, 232)',
                         'rgb(255, 174, 53)',
@@ -224,7 +224,7 @@
                 // }]
                 datasets: [{
                     label: 'Revenue',
-                    data: [12, 19],
+                    data: [{{ $persensatuw }}, {{ $persenduaw }}],
                     backgroundColor: [
                         'rgb(28, 165, 232)',
                         'rgb(255, 174, 53)',
