@@ -48,8 +48,8 @@ class AuthController extends Controller
             } elseif ($user->role == 2) {
                 return redirect()->route('user.admin.index');
             }
-            return redirect()->route('auth.index')->with('error', 'Username atau password salah!');
         }
+        return redirect()->route('auth.index')->with('error', 'Username atau password salah!');
     }
 
     // public function login(Request $request)
