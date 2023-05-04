@@ -75,13 +75,13 @@ class SiswaController extends Controller
             'kandidat_wakil_id' => $request->idwakil,
         ]);
         if ($voteaksi) {
-            
+
             $request->session()->invalidate();
-            
+
             $request->session()->regenerateToken();
-            
+
             Auth::logout();
-            
+
             return view('auth.index');
         }
     }

@@ -25,7 +25,7 @@ class AddSiswaSeeder extends Seeder
             [
                 'user_id' => $idkeren->id,
                 'kelas_id' => $sepuluh->id,
-                'nisn' => '12345678910',
+                // 'nisn' => '12345678910',
                 'nis' => '12345678910',
                 'nama' => 'Keren',
                 'jenkel' => 'L',
@@ -33,7 +33,7 @@ class AddSiswaSeeder extends Seeder
             [
                 'user_id' => $idbagus->id,
                 'kelas_id' => $sebelas->id,
-                'nisn' => '1234567891011',
+                // 'nisn' => '1234567891011',
                 'nis' => '1234567891011',
                 'nama' => 'Betul',
                 'jenkel' => 'P',
@@ -41,7 +41,7 @@ class AddSiswaSeeder extends Seeder
             [
                 'user_id' => $idhai->id,
                 'kelas_id' => $duabelas->id,
-                'nisn' => '123456789101112',
+                // 'nisn' => '123456789101112',
                 'nis' => '123456789101112',
                 'nama' => 'Hai',
                 'jenkel' => 'L',
