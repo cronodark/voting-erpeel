@@ -437,6 +437,10 @@ body {
     padding: 5px;
 }
 
+.fs-visi{
+    font-size: 0.79rem;
+}
+
 .fs-7 {
     font-size: 0.95rem;
 }
@@ -565,4 +569,24 @@ body {
 
 .max-130 {
     max-width: 130px;
+}
+
+.card-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+.voti-card {
+    height: 100% !important;
+}
+
+.voti-card .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+.voti-card .card-body p {
+    flex: 1 !important;
 }
