@@ -11,8 +11,7 @@
                         @csrf
                         @method('PUT')
                         <div class="text-white rounded text-center mb-4 votcard shadow-md bg-white p-4 pt-5">
-                            <img class="rounded-pill shadow-md p-2" src="{{ asset('assets/images/member-01.jpg') }}"
-                                alt="">
+                            <img class="rounded-pill shadow-md p-2" src="{{ $w->foto }}" alt="">
                             <h4 class="mt-3 fs-5 mb-1 fw-bold">{{ $w->name }}</h4>
                             <h5 class="mt-2 fs-6 mb-1 fw-bold">{{ $w->kelas }}</h5>
                             <h6 class="fs-6">Visi:</h6>
@@ -93,9 +92,10 @@
                             'success'
                         );
                         setTimeout(() => {
+                            window.location.href = '/';
                             const form = btn.closest('form');
                             form.submit();
-                        }, 1000);
+                        }, 2000);
                     }
                 });
             });

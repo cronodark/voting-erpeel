@@ -7,12 +7,11 @@
         <div class="row d-flex">
             @foreach ($ketua as $k)
                 <div class="col-lg-6 col-md-6">
-                    <form action="{{ route('user.murid.vote_ketua') }}" method="POST" id="{{ $k->id }}">
+                    <form action="{{ route('user.murid.vote_ketua') }}" method="POST" id="form-wakojur">
                         @csrf
                         @method('PUT')
                         <div class="text-white rounded text-center mb-4 votcard shadow-md bg-white p-4 pt-5">
-                            <img class="rounded-pill shadow-md p-2" src="{{ asset('assets/images/member-01.jpg') }}"
-                                alt="">
+                            <img class="rounded-pill shadow-md p-2" src="{{ $k->foto }}" alt="foto kandidat">
                             <h4 class="mt-3 fs-5 mb-1 fw-bold">{{ $k->name }}</h4>
                             <h5 class="mt-2 fs-6 mb-1 fw-bold">{{ $k->kelas }}</h5>
                             <h6 class="fs-6">Visi:</h6>
@@ -77,13 +76,19 @@
                             'Anda sudah memilih!',
                             'Pilihan anda telah disimpan! Silahkan pilih Wakil Koodinator',
                             'success'
-                        ).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = '{{ route('user.murid.wakil') }}';
-                                const form = btn.closest('form');
-                                form.submit();
-                            }
-                        });
+                        )
+                        // .then((result) => {
+                        //     if (result.isConfirmed) {
+                        //         const form = btn.closest('form');
+                        //         form.submit();
+                        //         window.location.href = '{{ route('user.murid.wakil') }}';
+                        //     }
+                        // });
+                        setTimeout(() => {
+                            window.location.href = '{{ route('user.murid.wakil') }}';
+                            const form = btn.closest('form');
+                            form.submit();
+                        }, 1000);
                     }
                 });
             });

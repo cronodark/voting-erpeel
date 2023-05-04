@@ -58,7 +58,9 @@ class SiswaController extends Controller
             'kandidat_ketua_id' => $request->idketua,
         ]);
 
-        return view('user.murid.wakil', [
+        // dd($voteaksi);
+
+        return redirect()->route('user.murid.wakil')->with([
             'voteaksi' => $voteaksi,
             'wakil' => $wakil
         ]);
@@ -84,7 +86,7 @@ class SiswaController extends Controller
 
             Auth::logout();
 
-            return view('auth.index');
+            return redirect('/');
         }
     }
 }

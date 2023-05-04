@@ -20,7 +20,7 @@
 
 <body>
 
-    @include('partials.admin.header')
+    @include('partials.murid.header')
 
     @yield('content')
 
