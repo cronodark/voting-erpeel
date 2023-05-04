@@ -18,10 +18,10 @@
                             <h6 class="fs-6">Visi:</h6>
                             <p class="text-dark mt-2 mb-3 fs-8">{{ $k->visi }}</p>
                             <input type="text" id="idketua" name="idketua" value="{{ $k->id }}" hidden>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $k->id }}"
+                            {{-- <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $k->id }}"
                                 class="btn btn-primary fw-bolder px-4 fs-8 me-4">
                                 <span><i class="bi bi-pass-fill"></i></span> Misi
-                            </button>
+                            </button> --}}
                             <button class="btn btn-success fw-bolder px-4 fs-8 button-vote-kojur" id="{{ $k->id }}">
                                 <span><i class="bi bi-clipboard2-check-fill"></i></span> Vote
                             </button>

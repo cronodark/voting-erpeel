@@ -49,7 +49,7 @@ class SiswaController extends Controller
         $siswa = Siswa::where('user_id', $user->id)->first();
         $vote = Vote::where('siswa_id', $siswa->id)->where('kandidat_ketua_id', 1)
             ->orWhere('kandidat_ketua_id', 2)->first();
-        // dd($vote);
+        // dd($request);
         if ($vote) {
             return redirect()->route('user.murid.index')->with('error', 'You have already voted.');
         }

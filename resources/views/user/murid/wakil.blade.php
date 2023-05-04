@@ -18,9 +18,9 @@
                             <h6 class="fs-6">Visi:</h6>
                             <p class="text-dark mt-2 mb-3 fs-8">{{ $w->visi }}</p>
                             <input type="text" id="idwakil" name="idwakil" value="{{ $w->id }}" hidden>
-                            <button data-bs-toggle="modal" data-bs-target="#exampleModal{{ $w->name }}"
+                            {{-- <button data-bs-toggle="modal" data-bs-target="#exampleModal{{ $w->name }}"
                                 class="btn btn-primary fw-bolder px-4 fs-8 me-4"><span><i
-                                        class="bi bi-pass-fill"></i></span> Misi</button>
+                                        class="bi bi-pass-fill"></i></span> Misi</button> --}}
                             <button class="btn btn-success fw-bolder px-4 fs-8 button-vote-wakojur"><span><i
                                         class="bi bi-clipboard2-check-fill"></i></span> Vote</button>
                         </div>
@@ -67,7 +67,7 @@
                     }
                 });
             });
-        }); 
+        });
     </script> --}}
     <script>
         const voteBtns = document.querySelectorAll('.button-vote-wakojur');

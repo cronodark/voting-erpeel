@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
             AddKetuaSeeder::class,
             AddWakilSeeder::class,
             AddKelasSeeder::class,
-            AddUserSeeder::class,
-            AddSiswaSeeder::class,
-            AddVoteSeeder::class,
+            // AddUserSeeder::class,
+            // AddSiswaSeeder::class,
+            // AddVoteSeeder::class,
         ]);
     }
 }
