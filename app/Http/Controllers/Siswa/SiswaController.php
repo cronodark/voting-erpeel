@@ -35,10 +35,13 @@ class SiswaController extends Controller
     }
     public function wakil()
     {
+        $user = auth()->user();
+        $siswa = Siswa::where('user_id', $user->id)->first();
         $wakil = KandidatWakil::all()->sortBy('id');
         // dd($wakil);
         return view('user.murid.wakil', [
             'wakil' => $wakil,
+            'siswa' => $siswa
         ]);
     }
 

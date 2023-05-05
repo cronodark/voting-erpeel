@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\User\Siswa;
 use App\Models\Vote\Vote;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -17,16 +18,17 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
+        // dd($request);
         $credentials = $request->validate([
             'username' => ['required'],
             'password' => ['required'],
         ]);
-
+        // dd($credentials);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             $user = Auth::user();
             $siswa = Siswa::where('user_id', $user->id)->first();
-
+            // dd($user);
             if ($user->role == 1) {
                 $checkVote = Vote::where('siswa_id', $siswa->id)
                     ->where(function ($query) {
