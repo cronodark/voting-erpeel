@@ -180,8 +180,8 @@
                 //     borderWidth: 1
                 // }]
                 datasets: [{
-                    label: 'Sales',
-                    data: [{{ $persensatu }}, {{ $persendua }}],
+                    label: 'Pemilih Ketua',
+                    data: [{{ $persensatu }} % , {{ $persendua }} % ],
                     backgroundColor: [
                         'rgb(28, 165, 232)',
                         'rgb(255, 174, 53)',
@@ -223,8 +223,8 @@
                 //     borderWidth: 1
                 // }]
                 datasets: [{
-                    label: 'Revenue',
-                    data: [{{ $persensatuw }}, {{ $persenduaw }}],
+                    label: 'Pemilih Wakil',
+                    data: [{{ $persensatuw }} % , {{ $persenduaw }}] % ,
                     backgroundColor: [
                         'rgb(28, 165, 232)',
                         'rgb(255, 174, 53)',

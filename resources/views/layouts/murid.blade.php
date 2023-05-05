@@ -46,7 +46,7 @@
     <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
     <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
     {{-- js custom --}}
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
 
 </body>
 

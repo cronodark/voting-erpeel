@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('kelas');
             $table->text('visi');
-            $table->text('misi');
+            // $table->text('misi');
             $table->timestamps();
         });
     }

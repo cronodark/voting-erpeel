@@ -15,18 +15,18 @@ class AddWakilSeeder extends Seeder
     {
         KandidatWakil::insert([
             [
-                'name' => 'Whangsaff',
-                'birth_date' => '10-9-2006',
+                'id' => 1,
+                'name' => 'Daffa Salmanaufal Adhyasta',
+                'birth_date' => '10-23-2006',
                 'kelas' => '10 RPL A',
-                'visi' => 'Di songkeh kan',
-                'misi' => 'login kan mobil ledeng'
+                'visi' => 'Memajukan RPL ke arah yang lebih positif dengan meningkatkan solidaritas dan pengetahuan agama maupun duniawi',
             ],
             [
-                'name' => 'Cilok',
-                'birth_date' => '9-5-2005',
+                'id' => 2,
+                'name' => 'Riyan Septiana',
+                'birth_date' => '9-5-2006',
                 'kelas' => '10 RPL B',
-                'visi' => 'Rahayukkk',
-                'misi' => 'ingpo mabar ep ep',
+                'visi' => 'Menjadikan jurusan yang lebih baik, dengan memiliki pribadi yang aktif, kreatif, inovatif, bersosialisasi, dan menjungjung tinggi nilai kekeluargaan',
             ],
         ]);
     }

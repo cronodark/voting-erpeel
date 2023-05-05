@@ -7,8 +7,10 @@ use App\Models\Kandidat\KandidatKetua;
 use App\Models\Kandidat\KandidatWakil;
 use App\Models\User\Siswa;
 use App\Models\Vote\Vote;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class SiswaController extends Controller
 {
@@ -26,7 +28,7 @@ class SiswaController extends Controller
         $siswa = Siswa::where('user_id', $user->id)->first();
         $ketua = KandidatKetua::all()->sortBy('id');
         $wakil = KandidatWakil::all()->sortBy('id');
-        // dd($user);
+        // dd($siswa);
         return view('user.murid.index', [
             'ketua' => $ketua,
             'wakil' => $wakil,
@@ -50,8 +52,7 @@ class SiswaController extends Controller
         $user = auth()->user();
         $wakil = KandidatWakil::all();
         $siswa = Siswa::where('user_id', $user->id)->first();
-        $vote = Vote::where('siswa_id', $siswa->id)->where('kandidat_ketua_id', 1)
-            ->orWhere('kandidat_ketua_id', 2)->first();
+        $vote = Vote::where('siswa_id', $siswa->id)->where('kandidat_ketua_id', 1 or 2)->first();
         // dd($request);
         if ($vote) {
             return redirect()->route('user.murid.index')->with('error', 'You have already voted.');
@@ -73,8 +74,7 @@ class SiswaController extends Controller
     {
         $user = auth()->user();
         $siswa = Siswa::where('user_id', $user->id)->first();
-        $vote = Vote::with(['siswa_id', 'kandidat_wakil_id'])
-            ->where('siswa_id', $siswa->id)->where('kandidat_wakil_id', 1 or 2)->first();
+        $vote = Vote::where('siswa_id', $siswa->id)->where('kandidat_wakil_id', 1 or 2)->first();
         if ($vote) {
             return redirect()->route('user.murid.wakil')->with('error', 'You have already voted.');
         }
@@ -87,7 +87,14 @@ class SiswaController extends Controller
 
             $request->session()->regenerateToken();
 
+            // Session::invalidate();
+
+            // Session::regenerateToken();
+
+            Cache::flush();
+
             Auth::logout();
+
 
             return redirect('/');
         }
